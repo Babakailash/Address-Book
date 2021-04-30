@@ -3,8 +3,9 @@ import java.net.*;
 
 public class AddressBook {
 
- //declear details variables
-	static String firstName;
+
+   //declear details variables
+ static String firstName;
  static String lastName;
  static String city;
  static String state;
@@ -13,7 +14,10 @@ public class AddressBook {
  static  long zipCode;
  static long phoneNumber;
 
+
+
     // Constructor allocate the variables
+
 
  public AddressBook(String firstName, String lastName, String city, String state, String address, String email, long zipCode, long phoneNumber)
 {
@@ -28,8 +32,8 @@ public class AddressBook {
 }
          /////Method, take inputs from user
 
-        public void details() {
-
+        public void details()
+        {
             Scanner a=new Scanner(System.in);
             System.out.println("Enter your details:");
             System.out.println("Enter your First Name: ");
@@ -67,8 +71,8 @@ public class AddressBook {
 
         // toString() method returns the string representation of the object
 
-        public String toString() {
-
+        public String toString()
+        {
             return ("Your Entered Details Are\nFirst Name: "+firstName+"\nLast Name: "+lastName+"\nAddress: "+address+"\nCity: "+city+"\nState: "+state+"\nZip Code: "+zipCode+"\nPhone Number :"+phoneNumber+"\nEmail: "+email+"\n");
 
         }
@@ -81,8 +85,14 @@ public class AddressBook {
             AddressBook person_1=new AddressBook(firstName, lastName, city, state, address, email, zipCode, phoneNumber);
 
 
+            AddressBook newPerson=new AddressBook(firstName, lastName, city, state, address, email, zipCode, phoneNumber);
+
+
             Scanner k=new Scanner(System.in);
-            System.out.println("Press 1 to Enter the contact details\nPress 2 for exit");
+            System.out.println("Press 1 to Enter the contact details\nPress 2 for Add New Contact Details\nPress 3 for exit");
+
+
+
             int option=k.nextInt();
 
             switch(option)
@@ -92,12 +102,14 @@ public class AddressBook {
                     person_1.toString();//calling the toString method return the details
                     list.add(person_1);//adding the details to the ArrayList (store the dynemic size data)
                     System.out.println(list.get(0));//printing the list using index
-
+                    break;
+                case 2:
+                    newPerson.details();//calling the details method using the object
+                    newPerson.toString();//calling the toString method return the details
+                    list.add(newPerson);//adding the details to the ArrayList (store the dynemic size data)
+                    System.out.println(list.get(1));//printing the list using index
+                    break; 
                 default:
-             break;
-
             }
-
-
     }
 }
