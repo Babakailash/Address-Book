@@ -1,115 +1,117 @@
-import java.util.*;
-import java.net.*;
 
-public class AddressBook {
-
-
-   //declear details variables
- static String firstName;
- static String lastName;
- static String city;
- static String state;
- static String address;
- static String email;
- static  long zipCode;
- static long phoneNumber;
+import java.util.Scanner;
+import java.util.ArrayList;
 
 
+    public class AddressBook {
 
-    // Constructor allocate the variables
+    public static void main(String args[]) {
+                 Scanner scan = new Scanner(System.in);
+                 addressB addressObject = new addressB();
+                 String choice = "yes";
+                 System.out.println("Wellcome to Address Book Program!");
 
+            while(choice.equals("yes") || choice.equals("Yes")) {
 
- public AddressBook(String firstName, String lastName, String city, String state, String address, String email, long zipCode, long phoneNumber)
-{
-      AddressBook.firstName = firstName;
-      AddressBook.lastName = lastName;
-      AddressBook.city = city;
-      AddressBook.state = state;
-      AddressBook.address = address;
-      AddressBook.email = email;
-      AddressBook.zipCode = zipCode;
-      AddressBook.phoneNumber = phoneNumber;
-}
-         /////Method, take inputs from user
+                 System.out.println("Firstname : ");
+                   String firstname = scan.nextLine();
+                 System.out.println("Lastname : ");
+                   String lastname = scan.nextLine();
+                 System.out.println("Address : ");
+                   String address = scan.nextLine();
+                 System.out.println("City : ");
+                   String city = scan.nextLine();
+                 System.out.println("State : ");
+                   String state = scan.nextLine();
+                 System.out.println("Zip : ");
+                   int zip = scan.nextInt();
+                 System.out.println("PhoneNumber : ");
+                   long phonenumber = scan.nextLong();
+                 System.out.println("Email : ");
+                   String email = scan.nextLine();
+                 System.out.println("Do you want add more contact, Enter Yes/yes : ");
+                   choice = scan.nextLine();
 
-        public void details()
-        {
-            Scanner a=new Scanner(System.in);
-            System.out.println("Enter your details:");
-            System.out.println("Enter your First Name: ");
-            AddressBook.firstName=a.nextLine();
-
-            Scanner b=new Scanner(System.in);
-            System.out.println("Enter your Last Name: ");
-            AddressBook.lastName=b.nextLine();
-
-            Scanner c=new Scanner(System.in);
-            System.out.println("Enter your Address: ");
-            AddressBook.address=c.nextLine();
-
-            Scanner d=new Scanner(System.in);
-            System.out.println("City : ");
-            AddressBook.city=d.nextLine();
-
-            Scanner e=new Scanner(System.in);
-            System.out.println("State : ");
-            AddressBook.state=e.nextLine();
-
-            Scanner f=new Scanner(System.in);
-            System.out.println("Zip Code: ");
-            AddressBook.zipCode =f.nextLong();
-
-            Scanner g=new Scanner(System.in);
-            System.out.println("Phone Number: ");
-            AddressBook.phoneNumber =g.nextLong();
-
-            Scanner h=new Scanner(System.in);
-            System.out.println("Email Id : ");
-            AddressBook.email=h.next();
+                   contactDetail contact = new contactDetail(firstname, lastname, address, city, state, zip, phonenumber, email);
+                   addressObject.insertContact(contact);
+                }
 
         }
-
-        // toString() method returns the string representation of the object
-
-        public String toString()
-        {
-            return ("Your Entered Details Are\nFirst Name: "+firstName+"\nLast Name: "+lastName+"\nAddress: "+address+"\nCity: "+city+"\nState: "+state+"\nZip Code: "+zipCode+"\nPhone Number :"+phoneNumber+"\nEmail: "+email+"\n");
-
-        }
-        //main method
-        public static void main(String args[])
-        {
-            System.out.println("Welcome to Address Book System");
-
-            List<AddressBook> list=new ArrayList<>();//list object for the Array List
-            AddressBook person_1=new AddressBook(firstName, lastName, city, state, address, email, zipCode, phoneNumber);
-
-
-            AddressBook newPerson=new AddressBook(firstName, lastName, city, state, address, email, zipCode, phoneNumber);
-
-
-            Scanner k=new Scanner(System.in);
-            System.out.println("Press 1 to Enter the contact details\nPress 2 for Add New Contact Details\nPress 3 for exit");
-
-
-
-            int option=k.nextInt();
-
-            switch(option)
-            {
-                case 1:
-                    person_1.details();//calling the details method using the object
-                    person_1.toString();//calling the toString method return the details
-                    list.add(person_1);//adding the details to the ArrayList (store the dynemic size data)
-                    System.out.println(list.get(0));//printing the list using index
-                    break;
-                case 2:
-                    newPerson.details();//calling the details method using the object
-                    newPerson.toString();//calling the toString method return the details
-                    list.add(newPerson);//adding the details to the ArrayList (store the dynemic size data)
-                    System.out.println(list.get(1));//printing the list using index
-                    break; 
-                default:
-            }
     }
+
+    class contactDetail {
+
+    public String firstname, lastname;
+    public String address, city, state;
+    public int zip;
+    public long phoneNumber;
+    public String email;
+
+    public contactDetail(String firstname, String lastname, String address, String city, String state, int zip, long phonenumber, String email) {
+                this.firstname = firstname;
+                this.lastname = lastname;
+                this.address = address;
+                this.city = city;
+                this.state = state;
+                this.zip = zip;
+                this.phoneNumber = phonenumber;
+                this.email = email;
+       }
+
+     public String getFirstName() {
+                return firstname;
+    }
+    public void setFirstName(String firstName) {
+                this.firstname = firstName;
+    }
+    public String getLastName() {
+                return lastname;
+    }
+    public void setLastName(String lastName) {
+                this.lastname = lastName;
+    }
+    public String getAddress() {
+                return address;
+    }
+    public void setAddress(String address) {
+                this.address = address;
+    }
+    public String getCity() {
+                return city;
+    }
+    public void setCity(String city) {
+                this.city = city;
+    }
+    public String getState() {
+                return state;
+    }
+    public void setState(String state) {
+               this.state = state;
+    }
+    public int getZip() {
+               return zip;
+    }
+    public void setZip(int zip) {
+               this.zip = zip;
+    }
+    public long getPhoneNo() {
+               return phoneNumber;
+    }
+    public void setPhoneNo(long phno) {
+               this.phoneNumber = phno;
+    }
+    public String getEmail() {
+               return email;
+    }
+    public void setEmail(String email) {
+               this.email = email;
+    }
+}
+   class addressB {
+
+      private ArrayList<contactDetail> contactList = new ArrayList<contactDetail>();
+
+                public void insertContact(contactDetail contactDetailObject) {
+                        contactList.add(contactDetailObject);
+                }
 }
