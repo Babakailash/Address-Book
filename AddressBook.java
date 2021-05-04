@@ -4,7 +4,6 @@ import java.util.ArrayList;
 public class AddressBook {
 	
     public static void main(String args[]) {
-
 		Scanner scan = new Scanner(System.in);
 		 addressBook addressObject = new addressBook();
 		String choice = "yes";
@@ -33,9 +32,9 @@ public class AddressBook {
 			contactDetail contact = new contactDetail(firstname, lastname, address, city, state, zip, phonenumber, email);
 			addressObject.insertContact(contact);
 		}
-		   addressObject.printContactDetails();
-      }
-  }
+		addressObject.printContactDetails();
+    }
+}
 
       class contactDetail {
             public String firstname, lastname;
@@ -129,50 +128,51 @@ public class AddressBook {
 		   
 		   
 
-		   public void delete(String nameToDelete) {
+		   public void added(String nameToAdded) {
 			 int i=0;
 			 for(i=0;i<contactList.size();i++) {
-				 if(contactList.get(i).firstname.equals(nameToDelete)) {
+				 Object added = null;
+				if(contactList.get(i).firstname.equals(added)) {
 					 contactList.remove(i);
-					 System.out.println("Contact is Deleted");
+					 System.out.println("Contact is Added");
         	
-			System.out.println("Delete Firstname : ");
+			System.out.println("Added Firstname : ");
 	        Scanner scan = new Scanner(System.in);
 			String firstname = scan.nextLine();
-	        contactDetail delete = null;
-			delete.setFirstName(firstname);
+	        contactDetail added1 = null;
+			added1.setFirstName(firstname);
 	        	
-			System.out.println("Delete Lastname : ");
+			System.out.println("Added Lastname : ");
 	        String lastname = scan.nextLine();
-			delete.setLastName(lastname);
+			added1.setLastName(lastname);
                 
-			System.out.println("Delete Address : ");
+			System.out.println("Added Address : ");
             String address = scan.nextLine();
-			delete.setAddress(address);
+			added1.setAddress(address);
                 
-			System.out.println("Delete City : ");
+			System.out.println("Added City : ");
             String city = scan.nextLine();
-		    delete.setCity(city);
+		    added1.setCity(city);
                 
-		    System.out.println("Delete State : ");
+		    System.out.println("Added State : ");
             String state = scan.nextLine();
-			delete.setState(state);
+			added1.setState(state);
                 
-		    System.out.println("Delete Zip : ");
+		    System.out.println("Added Zip : ");
             int zip = scan.nextInt();
-			delete.setZip(zip);
+			added1.setZip(zip);
                 
-			System.out.println("Delete PhoneNumber : ");
+			System.out.println("Added PhoneNumber : ");
             long phonenumber = scan.nextLong();
 			scan.nextLine();
-			delete.setPhoneNo(phonenumber);
+			added1.setPhoneNo(phonenumber);
                 
-			System.out.println("Delete Email : ");
+			System.out.println("Added Email : ");
             String email = scan.nextLine();
-		    delete.setEmail(email);
+		    added1.setEmail(email);
 			 } 
 		    else {
-				 System.out.println("Contact not found!");
+				 System.out.println("All Contact Show !");
 				 }
 			 }
 	     }
